@@ -1,38 +1,145 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Shift Selection SMS</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shift SMS Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 420px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-  <h2>Select Date, Time and Shift</h2>
+  <div class="container">
+    <h2>Shift SMS Form</h2>
 
-  <label for="datetime">Choose Date & Time:</label><br>
-  <input type="datetime-local" id="datetime"><br><br>
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" required />
 
-  <label for="shift">Select Shift:</label><br>
-  <select id="shift">
-    <option value="" disabled selected>-- Choose Shift --</option>
-    <option value="A">Shift A</option>
-    <option value="B">Shift B</option>
-    <option value="C">Shift C</option>
-  </select><br><br>
+    <label for="shift">Select Shift:</label>
+    <select id="shift" required>
+      <option value="" disabled selected>-- Choose Shift --</option>
+      <option value="A">Shift A</option>
+      <option value="B">Shift B</option>
+      <option value="C">Shift C</option>
+    </select>
 
-  <button onclick="sendSMS()">Send via SMS</button>
+    <label for="equipment">Select Equipment:</label>
+    <select id="equipment" required>
+      <option value="" disabled selected>-- Choose Equipment --</option>
+      <option>Banbury Mixer HF</option>
+      <option>Banbury Batchoff (ABO)</option>
+      <option>Banbury TSR</option>
+      <option>Banbury Chemical Systems</option>
+      <option>Carbon Lift</option>
+      <option>Single Bale Cutter</option>
+      <option>Lab Bale Cutter</option>
+      <option>Lab Press-1</option>
+      <option>Lab Press-2</option>
+      <option>Lab Mill</option>
+      <option>Lab Mixer</option>
+      <option>Extruder - Upstream</option>
+      <option>Extruder - Cassette</option>
+      <option>Extruder TCU & Pumps</option>
+      <option>CNC</option>
+      <option>4jet Laser Engraving Machine</option>
+      <option>VMI Tyre Building Machine</option>
+      <option>LMC Tyre Building Machine</option>
+      <option>Jing Yie Tyre Building Machine</option>
+      <option>Cavity-1</option>
+      <option>Cavity-2</option>
+      <option>Cavity-3</option>
+      <option>Cavity-4</option>
+      <option>Cavity-5</option>
+      <option>Cavity-6</option>
+      <option>Trench / PRV</option>
+      <option>Splice Jammer</option>
+      <option>Static Balancing Machine MHI TUO/DBM</option>
+      <option>Tyre OD Machine</option>
+      <option>IGTP Machine</option>
+      <option>Liner Rewinder</option>
+      <option>Banner Cutter</option>
+      <option>Steelastic Calender</option>
+      <option>VMI Apexing Machine</option>
+      <option>Single Cord Bead Winder</option>
+      <option>Multi Cord Bead Winder</option>
+      <option>Bead IC</option>
+      <option>Wire Cutting Machine</option>
+      <option>Splice Jamming Machine</option>
+      <option>HSU ZF</option>
+      <option>Jiruong Endurance Machine</option>
+      <option>Dynamic Prole Growth Machine</option>
+      <option>Static Plunger Test Machine</option>
+      <option>Plunger Testing Machine</option>
+      <option>Tyre Mounting Machine 1&2</option>
+      <option>TS Endurance Machine</option>
+      <option>Band saw tyre cutting machine</option>
+      <option>Utility</option>
+    </select>
+
+    <button onclick="sendSMS()">Send via SMS</button>
+  </div>
 
   <script>
     function sendSMS() {
-      const datetime = document.getElementById('datetime').value;
+      const date = document.getElementById('date').value;
       const shift = document.getElementById('shift').value;
+      const equipment = document.getElementById('equipment').value;
 
-      if (!datetime || !shift) {
-        alert("Please select both date/time and shift.");
+      if (!date || !shift || !equipment) {
+        alert("Please fill out all fields.");
         return;
       }
 
-      const number = "9999999999"; // Replace with your default target number
-      const message = encodeURIComponent(`Date: ${datetime}\nShift: ${shift}`);
-      const smsLink = `sms:${number}?body=${message}`;
+      const number = "9999999999"; // Replace with your number
+      const message = encodeURIComponent("Date: " + date + "\\nShift: " + shift + "\\nEquipment: " + equipment);
+      const smsLink = "sms:" + number + "?body=" + message;
       window.location.href = smsLink;
     }
   </script>
