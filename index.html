@@ -80,4 +80,154 @@
         <option>A</option>
         <option>B</option>
         <option>C</option>
-      </sel
+      </select>
+
+      <label>Equipment</label>
+      <select id="equipment" required>
+        <option value="">Select</option>
+        <option>Banbury Mixer HF</option>
+        <option>Banbury Batchoff (ABO)</option>
+        <option>Banbury TSR</option>
+        <option>Banbury Chemical Systems</option>
+        <option>Carbon Lift</option>
+        <option>Single Bale Cutter</option>
+        <option>Lab Bale Cutter</option>
+        <option>Lab Press-1</option>
+        <option>Lab Press-2</option>
+        <option>Lab Mill</option>
+        <option>Lab Mixer</option>
+        <option>Extruder - Upstream</option>
+        <option>Extruder - Cassette</option>
+        <option>Extruder TCU & Pumps</option>
+        <option>CNC</option>
+        <option>4jet Laser Engraving Machine</option>
+        <option>VMI Tyre Building Machine</option>
+        <option>LMC Tyre Building Machine</option>
+        <option>Jing Yie Tyre Building Machine</option>
+        <option>Cavity-1</option>
+        <option>Cavity-2</option>
+        <option>Cavity-3</option>
+        <option>Cavity-4</option>
+        <option>Cavity-5</option>
+        <option>Cavity-6</option>
+        <option>Trench / PRV</option>
+        <option>Splice Jammer</option>
+        <option>Static Balancing Machine MHI TUO/DBM</option>
+        <option>Tyre OD Machine</option>
+        <option>IGTP Machine</option>
+        <option>Liner Rewinder</option>
+        <option>Banner Cutter</option>
+        <option>Steelastic Calender</option>
+        <option>VMI Apexing Machine</option>
+        <option>Single Cord Bead Winder</option>
+        <option>Multi Cord Bead Winder</option>
+        <option>Bead IC</option>
+        <option>Wire Cutting Machine</option>
+        <option>Splice Jamming Machine</option>
+        <option>HSU ZF</option>
+        <option>Jiruong Endurance Machine</option>
+        <option>Dynamic Prole Growth Machine</option>
+        <option>Static Plunger Test Machine</option>
+        <option>Plunger Testing Machine</option>
+        <option>Tyre Mounting Machine 1&2</option>
+        <option>TS Endurance Machine</option>
+        <option>Band saw tyre cutting machine</option>
+        <option>Utility</option>
+      </select>
+
+      <label>Breakdown Type</label>
+      <select id="breakdown" required>
+        <option value="">Select</option>
+        <option>Mechanical</option>
+        <option>Electrical</option>
+        <option>Engg</option>
+      </select>
+
+      <label>Describe Problem Statement</label>
+      <textarea id="description" rows="3" required></textarea>
+
+      <label>Reported By</label>
+      <input type="text" id="reportedBy" required>
+
+      <button type="button" class="sheet" onclick="submitToSheet()">Log to Google Sheet</button>
+      <button type="button" class="sms" onclick="sendSMS()">Send SMS</button>
+      <button type="button" class="whatsapp" onclick="sendWhatsApp()">Send WhatsApp</button>
+    </form>
+  </div>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycby_l-JBHW6M6wWM5IRp1q5Fe269XDmFZHnDv0WkhwrS/dev";
+
+    function formatDate(input) {
+      const d = new Date(input);
+      return `${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}`;
+    }
+
+    function getFormData() {
+      return {
+        date: formatDate(document.getElementById("date").value),
+        time: document.getElementById("time").value,
+        shift: document.getElementById("shift").value,
+        equipment: document.getElementById("equipment").value,
+        breakdown: document.getElementById("breakdown").value,
+        description: document.getElementById("description").value,
+        reportedBy: document.getElementById("reportedBy").value
+      };
+    }
+
+    function validateForm(data) {
+      return Object.values(data).every(v => v.trim() !== "");
+    }
+
+    function submitToSheet() {
+      const data = getFormData();
+      if (!validateForm(data)) {
+        alert("Please fill all fields.");
+        return;
+      }
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new URLSearchParams(data)
+      })
+      .then(() => alert("Submitted to Google Sheet"))
+      .catch(() => alert("Failed to submit"));
+    }
+
+    function sendSMS() {
+      const data = getFormData();
+      if (!validateForm(data)) {
+        alert("Please fill all fields.");
+        return;
+      }
+      let numbers = {
+        Mechanical: "0919489913547",
+        Electrical: "0919489913546",
+        Engg: "0919489913547,0919489913546"
+      };
+      let message = `Date: ${data.date}\nTime: ${data.time}\nShift: ${data.shift}\nEquipment: ${data.equipment}\nBreakdown: ${data.breakdown}\nProblem: ${data.description}\nReported By: ${data.reportedBy}`;
+      window.location.href = `sms:${numbers[data.breakdown]}?body=${encodeURIComponent(message)}`;
+    }
+
+    function sendWhatsApp() {
+      const data = getFormData();
+      if (!validateForm(data)) {
+        alert("Please fill all fields.");
+        return;
+      }
+      let numbers = {
+        Mechanical: "919489913547",
+        Electrical: "919489913546",
+        Engg: "919489913547,919489913546"
+      };
+      let message = `Date: ${data.date}\nTime: ${data.time}\nShift: ${data.shift}\nEquipment: ${data.equipment}\nBreakdown: ${data.breakdown}\nProblem: ${data.description}\nReported By: ${data.reportedBy}`;
+      let all = numbers[data.breakdown].split(',');
+      window.open(`https://wa.me/${all[0]}?text=${encodeURIComponent(message)}`, '_blank');
+      if (all[1]) {
+        setTimeout(() => {
+          window.open(`https://wa.me/${all[1]}?text=${encodeURIComponent(message)}`, '_blank');
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>
