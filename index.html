@@ -1,161 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RDT MAINTENANCE REQUEST</title>
+  <title>MRF RDT MAINTENANCE REQUEST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      background: #f3f3f3;
       padding: 20px;
+    }
+    .container {
       max-width: 500px;
       margin: auto;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
-    h1 {
+    h2 {
       text-align: center;
-      background-color: #d32f2f;
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
+      color: #b30000;
+      margin-bottom: 10px;
     }
     img {
       display: block;
-      margin: 10px auto;
-      height: 60px;
-    }
-    form {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 0 auto 10px auto;
+      max-height: 80px;
     }
     label {
       display: block;
-      margin-top: 15px;
+      margin: 15px 0 5px;
     }
     input, select, textarea {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
-      border-radius: 6px;
       border: 1px solid #ccc;
+      border-radius: 6px;
     }
     button {
-      width: 48%;
-      margin-top: 20px;
-      padding: 10px;
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
       border: none;
-      color: white;
-      background-color: #1976d2;
       border-radius: 6px;
       font-size: 16px;
+      cursor: pointer;
     }
-    button:hover {
-      background-color: #1565c0;
-    }
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-    }
+    #logBtn { background-color: #007bff; color: white; }
+    #smsBtn { background-color: #28a745; color: white; }
+    #whatsappBtn { background-color: #25D366; color: white; }
   </style>
 </head>
 <body>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Madras_Rubber_Factory_Logo.svg/375px-Madras_Rubber_Factory_Logo.svg.png" alt="MRF Logo">
-  <h1>MRF RDT MAINTENANCE REQUEST</h1>
-  <form id="maintenanceForm">
-    <label for="date">Date*</label>
-    <input type="date" id="date" name="date" required>
+  <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Madras_Rubber_Factory_Logo.svg/375px-Madras_Rubber_Factory_Logo.svg.png" alt="MRF Logo">
+    <h2>MRF RDT MAINTENANCE REQUEST</h2>
 
-    <label for="time">Time*</label>
-    <input type="time" id="time" name="time" required>
+    <form id="maintenanceForm">
+      <label for="date">Date *</label>
+      <input type="date" id="date" name="date" required>
 
-    <label for="shift">Shift*</label>
-    <select id="shift" name="shift" required>
-      <option value="A">A</option>
-      <option value="B">B</option>
-      <option value="C">C</option>
-    </select>
+      <label for="time">Time *</label>
+      <input type="time" id="time" name="time" required>
 
-    <label for="equipment">Equipment*</label>
-    <select id="equipment" name="equipment" required>
-      <option value="">--Select--</option>
-      <option value="Banbury Mixer HF">Banbury Mixer HF</option>
-      <option value="Banbury Batchoff (ABO)">Banbury Batchoff (ABO)</option>
-      <option value="Banbury TSR">Banbury TSR</option>
-      <option value="Banbury Chemical Systems">Banbury Chemical Systems</option>
-      <option value="Carbon Lift">Carbon Lift</option>
-      <option value="Single Bale Cutter">Single Bale Cutter</option>
-      <option value="Lab Bale Cutter">Lab Bale Cutter</option>
-      <option value="Lab Press-1">Lab Press-1</option>
-      <option value="Lab Press-2">Lab Press-2</option>
-      <option value="Lab Mill">Lab Mill</option>
-      <option value="Lab Mixer">Lab Mixer</option>
-      <option value="Extruder - Upstream">Extruder - Upstream</option>
-      <option value="Extruder - Cassette">Extruder - Cassette</option>
-      <option value="Extruder TCU & Pumps">Extruder TCU & Pumps</option>
-      <option value="CNC">CNC</option>
-      <option value="4jet Laser Engraving Machine">4jet Laser Engraving Machine</option>
-      <option value="VMI Tyre Building Machine">VMI Tyre Building Machine</option>
-      <option value="LMC Tyre Building Machine">LMC Tyre Building Machine</option>
-      <option value="Jing Yie Tyre Building Machine">Jing Yie Tyre Building Machine</option>
-      <option value="Cavity-1">Cavity-1</option>
-      <option value="Cavity-2">Cavity-2</option>
-      <option value="Cavity-3">Cavity-3</option>
-      <option value="Cavity-4">Cavity-4</option>
-      <option value="Cavity-5">Cavity-5</option>
-      <option value="Cavity-6">Cavity-6</option>
-      <option value="Trench / PRV">Trench / PRV</option>
-      <option value="Splice Jammer">Splice Jammer</option>
-      <option value="Static Balancing Machine MHI TUO/DBM">Static Balancing Machine MHI TUO/DBM</option>
-      <option value="Tyre OD Machine">Tyre OD Machine</option>
-      <option value="IGTP Machine">IGTP Machine</option>
-      <option value="Liner Rewinder">Liner Rewinder</option>
-      <option value="Banner Cutter">Banner Cutter</option>
-      <option value="Steelastic Calender">Steelastic Calender</option>
-      <option value="VMI Apexing Machine">VMI Apexing Machine</option>
-      <option value="Single Cord Bead Winder">Single Cord Bead Winder</option>
-      <option value="Multi Cord Bead Winder">Multi Cord Bead Winder</option>
-      <option value="Bead IC">Bead IC</option>
-      <option value="Wire Cutting Machine">Wire Cutting Machine</option>
-      <option value="Splice Jamming Machine">Splice Jamming Machine</option>
-      <option value="HSU ZF">HSU ZF</option>
-      <option value="Jiruong Endurance Machine">Jiruong Endurance Machine</option>
-      <option value="Dynamic Prole Growth Machine">Dynamic Prole Growth Machine</option>
-      <option value="Static Plunger Test Machine">Static Plunger Test Machine</option>
-      <option value="Plunger Testing Machine">Plunger Testing Machine</option>
-      <option value="Tyre Mounting Machine 1&2">Tyre Mounting Machine 1&2</option>
-      <option value="TS Endurance Machine">TS Endurance Machine</option>
-      <option value="Band saw tyre cutting machine">Band saw tyre cutting machine</option>
-      <option value="Utility">Utility</option>
-    </select>
+      <label for="shift">Shift *</label>
+      <select id="shift" name="shift" required>
+        <option value="">Select</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+      </select>
 
-    <label for="breakdown">Breakdown Type*</label>
-    <select id="breakdown" name="breakdown" required>
-      <option value="Mechanical">Mechanical</option>
-      <option value="Electrical">Electrical</option>
-      <option value="Engg">Engg</option>
-    </select>
+      <label for="equipment">Equipment *</label>
+      <select id="equipment" name="equipment" required>
+        <option value="">Select</option>
+        <option value="Banbury Mixer HF">Banbury Mixer HF</option>
+        <option value="Banbury Batchoff (ABO)">Banbury Batchoff (ABO)</option>
+        <option value="Banbury TSR">Banbury TSR</option>
+        <option value="Banbury Chemical Systems">Banbury Chemical Systems</option>
+        <option value="Carbon Lift">Carbon Lift</option>
+        <option value="Single Bale Cutter">Single Bale Cutter</option>
+        <option value="Lab Bale Cutter">Lab Bale Cutter</option>
+        <option value="Lab Press-1">Lab Press-1</option>
+        <option value="Lab Press-2">Lab Press-2</option>
+        <!-- Add more if needed -->
+      </select>
 
-    <label for="description">Describe Problem Statement*</label>
-    <textarea id="description" name="description" rows="3" required></textarea>
+      <label for="breakdown">Breakdown Type *</label>
+      <select id="breakdown" name="breakdown" required>
+        <option value="">Select</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="Electrical">Electrical</option>
+        <option value="Engg">Engg</option>
+      </select>
 
-    <label for="reportedBy">Reported By*</label>
-    <input type="text" id="reportedBy" name="reportedBy" required>
+      <label for="description">Describe Problem *</label>
+      <textarea id="description" name="description" rows="3" required></textarea>
 
-    <div class="button-group">
-      <button type="button" onclick="sendSMS()">Send SMS</button>
-      <button type="button" onclick="sendWhatsApp()">Send WhatsApp</button>
-    </div>
-  </form>
+      <label for="reportedBy">Reported By *</label>
+      <input type="text" id="reportedBy" name="reportedBy" required>
+
+      <button type="button" id="logBtn">Log to Google Sheet</button>
+      <button type="button" id="smsBtn">Send via SMS</button>
+      <button type="button" id="whatsappBtn">Send via WhatsApp</button>
+    </form>
+  </div>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzxbzsya88gRnW1solNnRMIeHzR8_d0Q3V1GiiJXQlQr-HuEC1EdLuhI4u9oumdYBDl/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycby_l-JBHW6M6wWM5IRp1q5Fe269XDmFZHnDv0WkhwrS/dev";
 
-    function buildMessage() {
-      const rawDate = document.getElementById("date").value;
-      const dateParts = rawDate.split("-");
-      const date = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+    function formatDate(isoDate) {
+      const parts = isoDate.split("-");
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+
+    function createMessage() {
+      const date = formatDate(document.getElementById("date").value);
       const time = document.getElementById("time").value;
       const shift = document.getElementById("shift").value;
       const equipment = document.getElementById("equipment").value;
@@ -163,42 +123,65 @@
       const description = document.getElementById("description").value;
       const reportedBy = document.getElementById("reportedBy").value;
 
-      return `Date: ${date}\nTime: ${time}\nShift: ${shift}\nEquipment: ${equipment}\nBreakdown Type: ${breakdown}\nProblem: ${description}\nReported by: ${reportedBy}`;
+      return `Date: ${date}\nTime: ${time}\nShift: ${shift}\nEquipment: ${equipment}\nBreakdown Type: ${breakdown}\nDescription: ${description}\nReported By: ${reportedBy}`;
     }
 
-    function sendSMS() {
-      const msg = buildMessage();
+    function getPhoneNumbers() {
       const breakdown = document.getElementById("breakdown").value;
-      let numbers = "";
+      if (breakdown === "Mechanical") return ["919489913547"];
+      if (breakdown === "Electrical") return ["919489913546"];
+      if (breakdown === "Engg") return ["919489913547", "919489913546"];
+      return [];
+    }
 
-      if (breakdown === "Mechanical") numbers = "+919489913547";
-      else if (breakdown === "Electrical") numbers = "+919489913546";
-      else if (breakdown === "Engg") numbers = "+919489913546,+919489913547";
-
+    document.getElementById("logBtn").addEventListener("click", () => {
       const form = document.getElementById("maintenanceForm");
-      const data = new FormData(form);
-      fetch(scriptURL, { method: "POST", body: data });
-
-      window.location.href = `sms:${numbers}?body=${encodeURIComponent(msg)}`;
-    }
-
-    function sendWhatsApp() {
-      const msg = buildMessage();
-      const breakdown = document.getElementById("breakdown").value;
-      let number = "";
-
-      if (breakdown === "Mechanical") number = "+919489913547";
-      else if (breakdown === "Electrical") number = "+919489913546";
-      else if (breakdown === "Engg") {
-        window.location.href = `https://wa.me/+919489913546?text=${encodeURIComponent(msg)}`;
-        setTimeout(() => {
-          window.location.href = `https://wa.me/+919489913547?text=${encodeURIComponent(msg)}`;
-        }, 1000);
+      if (!form.checkValidity()) {
+        alert("Please fill all required fields.");
         return;
       }
 
-      window.location.href = `https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
-    }
+      const formData = new FormData(form);
+      fetch(scriptURL, { method: "POST", body: formData })
+        .then(response => {
+          alert("Data logged to Google Sheet successfully!");
+        })
+        .catch(error => {
+          alert("Error logging to sheet.");
+          console.error("Error:", error);
+        });
+    });
+
+    document.getElementById("smsBtn").addEventListener("click", () => {
+      if (!document.getElementById("maintenanceForm").checkValidity()) {
+        alert("Please fill all required fields.");
+        return;
+      }
+
+      const message = encodeURIComponent(createMessage());
+      const numbers = getPhoneNumbers();
+      if (numbers.length === 0) {
+        alert("Invalid breakdown type");
+        return;
+      }
+
+      window.location.href = `sms:${numbers[0]}?body=${message}`;
+    });
+
+    document.getElementById("whatsappBtn").addEventListener("click", () => {
+      if (!document.getElementById("maintenanceForm").checkValidity()) {
+        alert("Please fill all required fields.");
+        return;
+      }
+
+      const message = encodeURIComponent(createMessage());
+      const numbers = getPhoneNumbers();
+
+      numbers.forEach((num) => {
+        const url = `https://wa.me/${num}?text=${message}`;
+        window.open(url, "_blank");
+      });
+    });
   </script>
 </body>
 </html>
