@@ -1,176 +1,204 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MRF RDT MAINTENANCE REQUEST</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRF RDT Maintenance Request</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
     }
     .container {
-      max-width: 500px;
-      margin: auto;
       background: white;
-      padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     h2 {
       text-align: center;
-      color: #b30000;
-    }
-    img.logo {
-      display: block;
-      margin: 0 auto 10px;
-      width: 120px;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
     label {
       display: block;
       margin-top: 10px;
-      font-weight: bold;
     }
-    input, select, textarea {
+    select, input, textarea, button {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-top: 5px;
       border-radius: 6px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
     }
     button {
-      width: 48%;
       margin-top: 15px;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      background-color: #b30000;
+      background-color: #007bff;
       color: white;
       font-weight: bold;
       cursor: pointer;
     }
     button:hover {
-      background-color: #800000;
+      background-color: #0056b3;
     }
-    .btn-group {
-      display: flex;
-      justify-content: space-between;
+    img.logo {
+      display: block;
+      margin: 0 auto 10px;
+      max-width: 150px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Madras_Rubber_Factory_Logo.svg/375px-Madras_Rubber_Factory_Logo.svg.png" alt="MRF Logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Madras_Rubber_Factory_Logo.svg/375px-Madras_Rubber_Factory_Logo.svg.png" class="logo" />
     <h2>MRF RDT MAINTENANCE REQUEST</h2>
+    <form id="maintenance-form">
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" required />
 
-    <form id="maintenanceForm">
-      <label for="date">Date *</label>
-      <input type="date" id="date" name="date" required>
+      <label for="time">Time</label>
+      <input type="time" id="time" name="time" required />
 
-      <label for="time">Time *</label>
-      <input type="time" id="time" name="time" required>
-
-      <label for="shift">Shift *</label>
+      <label for="shift">Shift</label>
       <select id="shift" name="shift" required>
-        <option value="">Select</option>
+        <option value="">Select Shift</option>
         <option value="A">A</option>
         <option value="B">B</option>
         <option value="C">C</option>
       </select>
 
-      <label for="equipment">Equipment *</label>
+      <label for="equipment">Equipment</label>
       <select id="equipment" name="equipment" required>
         <option value="">Select Equipment</option>
+        <!-- Add all your equipment options here -->
         <option value="Banbury Mixer HF">Banbury Mixer HF</option>
         <option value="Banbury Batchoff (ABO)">Banbury Batchoff (ABO)</option>
         <option value="Banbury TSR">Banbury TSR</option>
         <option value="Banbury Chemical Systems">Banbury Chemical Systems</option>
         <option value="Carbon Lift">Carbon Lift</option>
         <option value="Single Bale Cutter">Single Bale Cutter</option>
-        <!-- Add rest of the equipment as needed -->
+        <option value="Lab Bale Cutter">Lab Bale Cutter</option>
+        <option value="Lab Press-1">Lab Press-1</option>
+        <option value="Lab Press-2">Lab Press-2</option>
+        <option value="Lab Mill">Lab Mill</option>
+        <option value="Lab Mixer">Lab Mixer</option>
+        <option value="Extruder - Upstream">Extruder - Upstream</option>
+        <option value="Extruder - Cassette">Extruder - Cassette</option>
+        <option value="Extruder TCU & Pumps">Extruder TCU & Pumps</option>
+        <option value="CNC">CNC</option>
+        <option value="4jet Laser Engraving Machine">4jet Laser Engraving Machine</option>
+        <option value="VMI Tyre Building Machine">VMI Tyre Building Machine</option>
+        <option value="LMC Tyre Building Machine">LMC Tyre Building Machine</option>
+        <option value="Jing Yie Tyre Building Machine">Jing Yie Tyre Building Machine</option>
+        <option value="Cavity-1">Cavity-1</option>
+        <option value="Cavity-2">Cavity-2</option>
+        <option value="Cavity-3">Cavity-3</option>
+        <option value="Cavity-4">Cavity-4</option>
+        <option value="Cavity-5">Cavity-5</option>
+        <option value="Cavity-6">Cavity-6</option>
+        <option value="Trench / PRV">Trench / PRV</option>
+        <option value="Splice Jammer">Splice Jammer</option>
+        <option value="Static Balancing Machine MHI TUO/DBM">Static Balancing Machine MHI TUO/DBM</option>
+        <option value="Tyre OD Machine">Tyre OD Machine</option>
+        <option value="IGTP Machine">IGTP Machine</option>
+        <option value="Liner Rewinder">Liner Rewinder</option>
+        <option value="Banner Cutter">Banner Cutter</option>
+        <option value="Steelastic Calender">Steelastic Calender</option>
+        <option value="VMI Apexing Machine">VMI Apexing Machine</option>
+        <option value="Single Cord Bead Winder">Single Cord Bead Winder</option>
+        <option value="Multi Cord Bead Winder">Multi Cord Bead Winder</option>
+        <option value="Bead IC">Bead IC</option>
+        <option value="Wire Cutting Machine">Wire Cutting Machine</option>
+        <option value="Splice Jamming Machine">Splice Jamming Machine</option>
+        <option value="HSU ZF">HSU ZF</option>
+        <option value="Jiruong Endurance Machine">Jiruong Endurance Machine</option>
+        <option value="Dynamic Prole Growth Machine">Dynamic Prole Growth Machine</option>
+        <option value="Static Plunger Test Machine">Static Plunger Test Machine</option>
+        <option value="Plunger Testing Machine">Plunger Testing Machine</option>
+        <option value="Tyre Mounting Machine 1&2">Tyre Mounting Machine 1&2</option>
+        <option value="TS Endurance Machine">TS Endurance Machine</option>
+        <option value="Band saw tyre cutting machine">Band saw tyre cutting machine</option>
         <option value="Utility">Utility</option>
       </select>
 
-      <label for="breakdown">Breakdown Type *</label>
+      <label for="breakdown">Breakdown Type</label>
       <select id="breakdown" name="breakdown" required>
-        <option value="">Select</option>
+        <option value="">Select Type</option>
         <option value="Mechanical">Mechanical</option>
         <option value="Electrical">Electrical</option>
         <option value="Engg">Engg</option>
       </select>
 
       <label for="description">Describe Problem Statement</label>
-      <textarea id="description" name="description" rows="3"></textarea>
+      <textarea id="description" name="description" rows="3" required></textarea>
 
-      <label for="reportedBy">Reported By *</label>
-      <input type="text" id="reportedBy" name="reportedBy" required>
+      <label for="reportedBy">Reported By</label>
+      <input type="text" id="reportedBy" name="reportedBy" required />
 
-      <div class="btn-group">
-        <button type="button" onclick="submitToSheet()">Log to Sheet</button>
-        <button type="button" onclick="sendMessage()">Send SMS/WhatsApp</button>
-      </div>
+      <button type="button" onclick="logToSheet()">Log to Google Sheet</button>
+      <button type="button" onclick="sendSMS()">Send via SMS</button>
+      <button type="button" onclick="sendWhatsApp()">Send via WhatsApp</button>
     </form>
   </div>
 
   <script>
     const scriptURL = "https://script.google.com/macros/s/AKfycbzxbzsya88gRnW1solNnRMIeHzR8_d0Q3V1GiiJXQlQr-HuEC1EdLuhI4u9oumdYBDl/exec";
 
-    function submitToSheet() {
-      const form = document.getElementById('maintenanceForm');
-      if (!form.reportedBy.value || !form.date.value || !form.shift.value || !form.equipment.value || !form.breakdown.value) {
-        alert("Please fill all required fields.");
-        return;
-      }
-
-      const formData = new FormData(form);
-      fetch(scriptURL, {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.text())
-      .then(data => {
-        alert("Logged to sheet successfully!");
-        form.reset();
-      })
-      .catch(error => {
-        alert("Error saving to sheet.");
-        console.error("Error!", error.message);
-      });
+    function getFormData() {
+      return {
+        date: document.getElementById("date").value,
+        time: document.getElementById("time").value,
+        shift: document.getElementById("shift").value,
+        equipment: document.getElementById("equipment").value,
+        breakdown: document.getElementById("breakdown").value,
+        description: document.getElementById("description").value,
+        reportedBy: document.getElementById("reportedBy").value,
+      };
     }
 
-    function sendMessage() {
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      const shift = document.getElementById("shift").value;
-      const equipment = document.getElementById("equipment").value;
-      const breakdown = document.getElementById("breakdown").value;
-      const description = document.getElementById("description").value;
-      const reportedBy = document.getElementById("reportedBy").value;
+    function logToSheet() {
+      const data = getFormData();
+      fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(response => alert("Logged to Google Sheet Successfully!"))
+        .catch(error => alert("Error logging to sheet."));
+    }
 
-      if (!date || !time || !shift || !equipment || !breakdown || !reportedBy) {
-        alert("Please fill all required fields before sending.");
+    function sendSMS() {
+      const data = getFormData();
+      const message = `Date: ${formatDate(data.date)}\nTime: ${data.time}\nShift: ${data.shift}\nEquipment: ${data.equipment}\nBreakdown: ${data.breakdown}\nProblem: ${data.description}\nReported By: ${data.reportedBy}`;
+      let number = "";
+      if (data.breakdown === "Mechanical") number = "0919489913547";
+      else if (data.breakdown === "Electrical") number = "0919489913546";
+      else if (data.breakdown === "Engg") number = "091944443333,091944442222";
+
+      window.location.href = `sms:${number}?&body=${encodeURIComponent(message)}`;
+    }
+
+    function sendWhatsApp() {
+      const data = getFormData();
+      const message = `Date: ${formatDate(data.date)}\nTime: ${data.time}\nShift: ${data.shift}\nEquipment: ${data.equipment}\nBreakdown: ${data.breakdown}\nProblem: ${data.description}\nReported By: ${data.reportedBy}`;
+      let number = "";
+      if (data.breakdown === "Mechanical") number = "919489913547";
+      else if (data.breakdown === "Electrical") number = "919489913546";
+      else if (data.breakdown === "Engg") {
+        const numbers = ["91944443333", "91944442222"];
+        numbers.forEach(num => window.open(`https://wa.me/${num}?text=${encodeURIComponent(message)}`, '_blank'));
         return;
       }
+      window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank');
+    }
 
-      const formattedDate = new Date(date).toLocaleDateString("en-GB");
-
-      const message = `Date: ${formattedDate}%0ATime: ${time}%0AShift: ${shift}%0AEquipment: ${equipment}%0ABreakdown: ${breakdown}%0ADescription: ${description}%0AReported By: ${reportedBy}`;
-
-      let number;
-      if (breakdown === "Mechanical") {
-        number = "919489913547";
-      } else if (breakdown === "Electrical") {
-        number = "919489913546";
-      } else if (breakdown === "Engg") {
-        number = "919489913547,919489913546";
-      }
-
-      // Prefer WhatsApp if available
-      if (number.includes(",")) {
-        number.split(",").forEach(n => window.open(`https://wa.me/${n.trim()}?text=${message}`, '_blank'));
-      } else {
-        window.open(`https://wa.me/${number}?text=${message}`, '_blank');
-      }
+    function formatDate(dateString) {
+      const [year, month, day] = dateString.split("-");
+      return `${day}-${month}-${year}`;
     }
   </script>
 </body>
