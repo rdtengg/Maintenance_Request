@@ -160,14 +160,14 @@ Reported By: ${document.getElementById("reportedby").value}`;
 
     function sendSMS() {
       const breakdownType = document.getElementById("breakdown").value;
-      const phone = breakdownType === "Mechanical" ? "0919489913547" : "0919489913546";
+      const phone = breakdownType === "Mechanical" ? "+919489913547" : "+919489913546";
       const message = encodeURIComponent(buildMessage());
       window.location.href = `sms:${phone}?body=${message}`;
     }
 
     function sendWhatsApp() {
       const breakdownType = document.getElementById("breakdown").value;
-      const phone = breakdownType === "Mechanical" ? "919489913547" : "919489913546";
+      const phone = breakdownType === "Mechanical" ? "+919489913547" : "+919489913546";
       const message = encodeURIComponent(buildMessage());
       window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
     }
