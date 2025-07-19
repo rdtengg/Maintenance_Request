@@ -54,7 +54,7 @@
 <body>
   <div class="container">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/MRF_Tyre_Logo.svg/512px-MRF_Tyre_Logo.svg.png" alt="MRF Logo" class="logo">
-    <h2>MRF RDT MAINTENANCE REQUEST</h2>
+    <h2> RDT MAINTENANCE REQUEST</h2>
 
     <label for="date">Date<span style="color:red">*</span></label>
     <input type="date" id="date" required>
@@ -159,11 +159,11 @@
       const message = encodeURIComponent(buildMessage());
 
       if (breakdownType === "Mechanical") {
-        window.location.href = `sms:0919489913547?body=${message}`;
+        window.location.href = `sms:+919489913547?body=${message}`;
       } else if (breakdownType === "Electrical") {
-        window.location.href = `sms:0919489913546?body=${message}`;
+        window.location.href = `sms:+919489913546?body=${message}`;
       } else if (breakdownType === "Engg") {
-        window.location.href = `sms:0919489913546,0919489913547?body=${message}`;
+        window.location.href = `sms:+919489913546,0919489913547?body=${message}`;
       }
     }
 
@@ -172,12 +172,12 @@
       const message = encodeURIComponent(buildMessage());
 
       if (breakdownType === "Mechanical") {
-        window.open(`https://wa.me/919489913547?text=${message}`, "_blank");
+        window.open(`https://wa.me/+919489913547?text=${message}`, "_blank");
       } else if (breakdownType === "Electrical") {
-        window.open(`https://wa.me/919489913546?text=${message}`, "_blank");
+        window.open(`https://wa.me/+919489913546?text=${message}`, "_blank");
       } else if (breakdownType === "Engg") {
-        window.open(`https://wa.me/919489913546?text=${message}`, "_blank");
-        window.open(`https://wa.me/919489913547?text=${message}`, "_blank");
+        window.open(`https://wa.me/+919489913546?text=${message}`, "_blank");
+        window.open(`https://wa.me/+919489913547?text=${message}`, "_blank");
       }
     }
   </script>
