@@ -119,4 +119,68 @@
     </select>
   </div>
 
-  <div class="form-gr
+  <div class="form-group">
+    <label for="description">Describe Problem Statement *</label>
+    <textarea id="description" rows="4" required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="reportedby">Reported By *</label>
+    <input type="text" id="reportedby" required>
+  </div>
+
+  <button type="button" onclick="sendToSheet()">Save to Google Sheet</button>
+  <button type="button" onclick="sendSMS()">Send SMS</button>
+  <button type="button" onclick="sendWhatsApp()">Send via WhatsApp</button>
+
+  <script>
+    function buildMessage() {
+      return `Date: ${document.getElementById("date").value}
+Time: ${document.getElementById("time").value}
+Shift: ${document.getElementById("shift").value}
+Equipment: ${document.getElementById("equipment").value}
+Problem Statement: ${document.getElementById("description").value}
+Reported By: ${document.getElementById("reportedby").value}`;
+    }
+
+    function sendSMS() {
+      const message = encodeURIComponent(buildMessage());
+      const phoneNumbers = ["999999999", "888888888"]; // <== CHANGE THESE
+      window.location.href = `sms:${phoneNumbers.join(",")}?body=${message}`;
+    }
+
+    function sendWhatsApp() {
+      const message = encodeURIComponent(buildMessage());
+      window.open(`https://wa.me/?text=${message}`, "_blank");
+    }
+
+    function sendToSheet() {
+      const data = {
+        date: document.getElementById("date").value,
+        time: document.getElementById("time").value,
+        shift: document.getElementById("shift").value,
+        equipment: document.getElementById("equipment").value,
+        description: document.getElementById("description").value,
+        reportedby: document.getElementById("reportedby").value
+      };
+
+      fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Saved to Google Sheet successfully");
+        } else {
+          alert("Failed to save to Google Sheet");
+        }
+      })
+      .catch(error => {
+        alert("Error: " + error.message);
+      });
+    }
+  </script>
+
+</body>
+</html>
