@@ -1,74 +1,40 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quick Feedback</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Shift Selection SMS</title>
 </head>
-<body class="bg-gray-100 text-gray-800 p-4">
+<body>
+  <h2>Select Date, Time and Shift</h2>
 
-  <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6">
-    <h2 class="text-xl font-bold text-center mb-6">Quick Feedback</h2>
+  <label for="datetime">Choose Date & Time:</label><br>
+  <input type="datetime-local" id="datetime"><br><br>
 
-    <div class="mb-4">
-      <p class="font-medium mb-2">1. How was today's session?</p>
-      <div class="space-y-2">
-        <label class="block"><input type="radio" name="q1" value="Great" class="mr-2"> 👍 Great</label>
-        <label class="block"><input type="radio" name="q1" value="Okay" class="mr-2"> 😐 Okay</label>
-        <label class="block"><input type="radio" name="q1" value="Bad" class="mr-2"> 👎 Bad</label>
-      </div>
-    </div>
+  <label for="shift">Select Shift:</label><br>
+  <select id="shift">
+    <option value="" disabled selected>-- Choose Shift --</option>
+    <option value="A">Shift A</option>
+    <option value="B">Shift B</option>
+    <option value="C">Shift C</option>
+  </select><br><br>
 
-    <div class="mb-4">
-      <p class="font-medium mb-2">2. Would you recommend this to others?</p>
-      <div class="space-y-2">
-        <label class="block"><input type="radio" name="q2" value="Yes" class="mr-2"> ✅ Yes</label>
-        <label class="block"><input type="radio" name="q2" value="No" class="mr-2"> ❌ No</label>
-      </div>
-    </div>
-
-    <button onclick="generateMessage()" class="w-full bg-blue-600 text-white py-2 rounded-lg mt-4 hover:bg-blue-700 transition">Generate Message</button>
-
-    <div id="result" class="mt-6 text-sm whitespace-pre-line hidden"></div>
-
-    <div id="shareButtons" class="mt-4 flex flex-col space-y-3 hidden">
-      <button onclick="shareSMS()" class="bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">📲 Send via SMS</button>
-      <button onclick="shareWhatsApp()" class="bg-green-700 text-white py-2 rounded-lg hover:bg-green-800">🟢 Send via WhatsApp</button>
-    </div>
-  </div>
+  <button onclick="sendSMS()">Send via SMS</button>
 
   <script>
-    let message = '';
+    function sendSMS() {
+      const datetime = document.getElementById('datetime').value;
+      const shift = document.getElementById('shift').value;
 
-    function generateMessage() {
-      const q1 = document.querySelector('input[name="q1"]:checked');
-      const q2 = document.querySelector('input[name="q2"]:checked');
-
-      if (!q1 || !q2) {
-        alert('Please answer all questions.');
+      if (!datetime || !shift) {
+        alert("Please select both date/time and shift.");
         return;
       }
 
-      message = `Here’s my feedback:\n` +
-                `1. How was today's session? — ${q1.value}\n` +
-                `2. Would you recommend this to others? — ${q2.value}`;
-
-      document.getElementById('result').innerText = message;
-      document.getElementById('result').classList.remove('hidden');
-      document.getElementById('shareButtons').classList.remove('hidden');
-    }
-
-    function shareSMS() {
-      const smsBody = encodeURIComponent(message);
-      window.location.href = `sms:?body=${smsBody}`;
-    }
-
-    function shareWhatsApp() {
-      const waBody = encodeURIComponent(message);
-      window.open(`https://wa.me/?text=${waBody}`, '_blank');
+      const number = "9999999999"; // Replace with your default target number
+      const message = encodeURIComponent(`Date: ${datetime}\nShift: ${shift}`);
+      const smsLink = `sms:${number}?body=${message}`;
+      window.location.href = smsLink;
     }
   </script>
-
 </body>
 </html>
