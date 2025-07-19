@@ -137,7 +137,7 @@
         return;
       }
 
-      const number = "9944557064,9443599173"; // Replace with your number
+      const number = "9944557064, 9443599173"; // Replace with your number
       const message = encodeURIComponent("Date: " + date + "\\nShift: " + shift + "\\nEquipment: " + equipment);
       const smsLink = "sms:" + number + "?body=" + message;
       window.location.href = smsLink;
