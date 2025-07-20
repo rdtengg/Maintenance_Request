@@ -6,199 +6,189 @@
   <title>MRF RDT Maintenance Request</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
       padding: 20px;
-      background-color: #f0f0f0;
     }
     .container {
+      max-width: 500px;
+      margin: 0 auto;
       background: white;
-      border-radius: 12px;
       padding: 20px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    h2 {
+    h1 {
       text-align: center;
-      font-size: 18px;
-      margin-bottom: 20px;
+      color: #b30000;
+    }
+    img {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 120px;
     }
     label {
-      display: block;
+      font-weight: bold;
       margin-top: 10px;
+      display: block;
     }
-    select, input, textarea, button {
+    input, select, textarea, button {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
+      margin-bottom: 15px;
       border-radius: 6px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
     }
     button {
-      margin-top: 15px;
-      background-color: #007bff;
+      background-color: #b30000;
       color: white;
-      font-weight: bold;
       cursor: pointer;
+      font-weight: bold;
     }
-    button:hover {
-      background-color: #0056b3;
-    }
-    img.logo {
-      display: block;
-      margin: 0 auto 10px;
-      max-width: 150px;
+    .btn-group button {
+      width: 48%;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Madras_Rubber_Factory_Logo.svg/375px-Madras_Rubber_Factory_Logo.svg.png" class="logo" />
-    <h2>MRF RDT MAINTENANCE REQUEST</h2>
-    <form id="maintenance-form">
-      <label for="date">Date</label>
-      <input type="date" id="date" name="date" required />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Madras_Rubber_Factory_Logo.svg/375px-Madras_Rubber_Factory_Logo.svg.png" alt="MRF Logo" />
+    <h1>MRF RDT MAINTENANCE REQUEST</h1>
 
-      <label for="time">Time</label>
-      <input type="time" id="time" name="time" required />
+    <label for="date">Date*</label>
+    <input type="date" id="date" required />
 
-      <label for="shift">Shift</label>
-      <select id="shift" name="shift" required>
-        <option value="">Select Shift</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-      </select>
+    <label for="time">Time*</label>
+    <input type="time" id="time" required />
 
-      <label for="equipment">Equipment</label>
-      <select id="equipment" name="equipment" required>
-        <option value="">Select Equipment</option>
-        <!-- Add all your equipment options here -->
-        <option value="Banbury Mixer HF">Banbury Mixer HF</option>
-        <option value="Banbury Batchoff (ABO)">Banbury Batchoff (ABO)</option>
-        <option value="Banbury TSR">Banbury TSR</option>
-        <option value="Banbury Chemical Systems">Banbury Chemical Systems</option>
-        <option value="Carbon Lift">Carbon Lift</option>
-        <option value="Single Bale Cutter">Single Bale Cutter</option>
-        <option value="Lab Bale Cutter">Lab Bale Cutter</option>
-        <option value="Lab Press-1">Lab Press-1</option>
-        <option value="Lab Press-2">Lab Press-2</option>
-        <option value="Lab Mill">Lab Mill</option>
-        <option value="Lab Mixer">Lab Mixer</option>
-        <option value="Extruder - Upstream">Extruder - Upstream</option>
-        <option value="Extruder - Cassette">Extruder - Cassette</option>
-        <option value="Extruder TCU & Pumps">Extruder TCU & Pumps</option>
-        <option value="CNC">CNC</option>
-        <option value="4jet Laser Engraving Machine">4jet Laser Engraving Machine</option>
-        <option value="VMI Tyre Building Machine">VMI Tyre Building Machine</option>
-        <option value="LMC Tyre Building Machine">LMC Tyre Building Machine</option>
-        <option value="Jing Yie Tyre Building Machine">Jing Yie Tyre Building Machine</option>
-        <option value="Cavity-1">Cavity-1</option>
-        <option value="Cavity-2">Cavity-2</option>
-        <option value="Cavity-3">Cavity-3</option>
-        <option value="Cavity-4">Cavity-4</option>
-        <option value="Cavity-5">Cavity-5</option>
-        <option value="Cavity-6">Cavity-6</option>
-        <option value="Trench / PRV">Trench / PRV</option>
-        <option value="Splice Jammer">Splice Jammer</option>
-        <option value="Static Balancing Machine MHI TUO/DBM">Static Balancing Machine MHI TUO/DBM</option>
-        <option value="Tyre OD Machine">Tyre OD Machine</option>
-        <option value="IGTP Machine">IGTP Machine</option>
-        <option value="Liner Rewinder">Liner Rewinder</option>
-        <option value="Banner Cutter">Banner Cutter</option>
-        <option value="Steelastic Calender">Steelastic Calender</option>
-        <option value="VMI Apexing Machine">VMI Apexing Machine</option>
-        <option value="Single Cord Bead Winder">Single Cord Bead Winder</option>
-        <option value="Multi Cord Bead Winder">Multi Cord Bead Winder</option>
-        <option value="Bead IC">Bead IC</option>
-        <option value="Wire Cutting Machine">Wire Cutting Machine</option>
-        <option value="Splice Jamming Machine">Splice Jamming Machine</option>
-        <option value="HSU ZF">HSU ZF</option>
-        <option value="Jiruong Endurance Machine">Jiruong Endurance Machine</option>
-        <option value="Dynamic Prole Growth Machine">Dynamic Prole Growth Machine</option>
-        <option value="Static Plunger Test Machine">Static Plunger Test Machine</option>
-        <option value="Plunger Testing Machine">Plunger Testing Machine</option>
-        <option value="Tyre Mounting Machine 1&2">Tyre Mounting Machine 1&2</option>
-        <option value="TS Endurance Machine">TS Endurance Machine</option>
-        <option value="Band saw tyre cutting machine">Band saw tyre cutting machine</option>
-        <option value="Utility">Utility</option>
-      </select>
+    <label for="shift">Shift*</label>
+    <select id="shift" required>
+      <option value="">Select Shift</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
 
-      <label for="breakdown">Breakdown Type</label>
-      <select id="breakdown" name="breakdown" required>
-        <option value="">Select Type</option>
-        <option value="Mechanical">Mechanical</option>
-        <option value="Electrical">Electrical</option>
-        <option value="Engg">Engg</option>
-      </select>
+    <label for="equipment">Equipment*</label>
+    <select id="equipment" required>
+      <option value="">Select Equipment</option>
+      <option value="Banbury Mixer HF">Banbury Mixer HF</option>
+      <option value="Banbury Batchoff (ABO)">Banbury Batchoff (ABO)</option>
+      <option value="Banbury TSR">Banbury TSR</option>
+      <option value="Banbury Chemical Systems">Banbury Chemical Systems</option>
+      <option value="Carbon Lift">Carbon Lift</option>
+      <option value="Single Bale Cutter">Single Bale Cutter</option>
+      <option value="Lab Bale Cutter">Lab Bale Cutter</option>
+      <option value="Lab Press-1">Lab Press-1</option>
+      <option value="Lab Press-2">Lab Press-2</option>
+      <option value="Lab Mill">Lab Mill</option>
+      <option value="Lab Mixer">Lab Mixer</option>
+      <option value="Extruder - Upstream">Extruder - Upstream</option>
+      <option value="Extruder - Cassette">Extruder - Cassette</option>
+      <option value="Extruder TCU & Pumps">Extruder TCU & Pumps</option>
+      <option value="CNC">CNC</option>
+      <option value="4jet Laser Engraving Machine">4jet Laser Engraving Machine</option>
+      <option value="VMI Tyre Building Machine">VMI Tyre Building Machine</option>
+      <option value="LMC Tyre Building Machine">LMC Tyre Building Machine</option>
+      <option value="Jing Yie Tyre Building Machine">Jing Yie Tyre Building Machine</option>
+      <option value="Cavity-1">Cavity-1</option>
+      <option value="Cavity-2">Cavity-2</option>
+      <option value="Cavity-3">Cavity-3</option>
+      <option value="Cavity-4">Cavity-4</option>
+      <option value="Cavity-5">Cavity-5</option>
+      <option value="Cavity-6">Cavity-6</option>
+      <option value="Trench / PRV">Trench / PRV</option>
+      <option value="Splice Jammer">Splice Jammer</option>
+      <option value="Static Balancing Machine MHI TUO/DBM">Static Balancing Machine MHI TUO/DBM</option>
+      <option value="Tyre OD Machine">Tyre OD Machine</option>
+      <option value="IGTP Machine">IGTP Machine</option>
+      <option value="Liner Rewinder">Liner Rewinder</option>
+      <option value="Banner Cutter">Banner Cutter</option>
+      <option value="Steelastic Calender">Steelastic Calender</option>
+      <option value="VMI Apexing Machine">VMI Apexing Machine</option>
+      <option value="Single Cord Bead Winder">Single Cord Bead Winder</option>
+      <option value="Multi Cord Bead Winder">Multi Cord Bead Winder</option>
+      <option value="Bead IC">Bead IC</option>
+      <option value="Wire Cutting Machine">Wire Cutting Machine</option>
+      <option value="Splice Jamming Machine">Splice Jamming Machine</option>
+      <option value="HSU ZF">HSU ZF</option>
+      <option value="Jiruong Endurance Machine">Jiruong Endurance Machine</option>
+      <option value="Dynamic Prole Growth Machine">Dynamic Prole Growth Machine</option>
+      <option value="Static Plunger Test Machine">Static Plunger Test Machine</option>
+      <option value="Plunger Testing Machine">Plunger Testing Machine</option>
+      <option value="Tyre Mounting Machine 1&2">Tyre Mounting Machine 1&2</option>
+      <option value="TS Endurance Machine">TS Endurance Machine</option>
+      <option value="Band saw tyre cutting machine">Band saw tyre cutting machine</option>
+      <option value="Utility">Utility</option>
+    </select>
 
-      <label for="description">Describe Problem Statement</label>
-      <textarea id="description" name="description" rows="3" required></textarea>
+    <label for="breakdownType">Breakdown Type*</label>
+    <select id="breakdownType" required>
+      <option value="">Select Type</option>
+      <option value="Mechanical">Mechanical</option>
+      <option value="Electrical">Electrical</option>
+      <option value="Engg">Engg</option>
+    </select>
 
-      <label for="reportedBy">Reported By</label>
-      <input type="text" id="reportedBy" name="reportedBy" required />
+    <label for="description">Describe Problem Statement</label>
+    <textarea id="description"></textarea>
 
-      <button type="button" onclick="logToSheet()">Log to Google Sheet</button>
-      <button type="button" onclick="sendSMS()">Send via SMS</button>
-      <button type="button" onclick="sendWhatsApp()">Send via WhatsApp</button>
-    </form>
+    <label for="reportedBy">Reported By*</label>
+    <input type="text" id="reportedBy" required />
+
+    <div class="btn-group">
+      <button onclick="logToGoogleSheets()">Log to Google Sheets</button>
+      <button onclick="sendMessage('sms')">Send SMS</button>
+      <button onclick="sendMessage('whatsapp')">Send WhatsApp</button>
+    </div>
   </div>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzxbzsya88gRnW1solNnRMIeHzR8_d0Q3V1GiiJXQlQr-HuEC1EdLuhI4u9oumdYBDl/exec";
+    function logToGoogleSheets() {
+      const data = collectFormData();
+      fetch("https://script.google.com/macros/s/AKfycbwiWrrGh0u2GeIcfK5frqZ_IwkrF1fZpnuz6Jc6dA3SHfLsFHOMLGryUXFo0-_pjXnE/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      }).then(() => alert("Logged to Google Sheets"));
+    }
 
-    function getFormData() {
+    function sendMessage(method) {
+      const data = collectFormData();
+      const msg = `Date: ${data.date}\nTime: ${data.time}\nShift: ${data.shift}\nEquipment: ${data.equipment}\nBreakdown Type: ${data.breakdownType}\nDescription: ${data.description}\nReported By: ${data.reportedBy}`;
+      let numbers = [];
+      if (data.breakdownType === "Mechanical") numbers = ["0919489913547"];
+      else if (data.breakdownType === "Electrical") numbers = ["0919489913546"];
+      else if (data.breakdownType === "Engg") numbers = ["091912345678", "0919988776655"];
+
+      numbers.forEach(num => {
+        const encoded = encodeURIComponent(msg);
+        const url =
+          method === 'whatsapp'
+            ? `https://wa.me/${num}?text=${encoded}`
+            : `sms:${num}?body=${encoded}`;
+        window.open(url, '_blank');
+      });
+    }
+
+    function collectFormData() {
       return {
-        date: document.getElementById("date").value,
+        date: formatDate(document.getElementById("date").value),
         time: document.getElementById("time").value,
         shift: document.getElementById("shift").value,
         equipment: document.getElementById("equipment").value,
-        breakdown: document.getElementById("breakdown").value,
+        breakdownType: document.getElementById("breakdownType").value,
         description: document.getElementById("description").value,
         reportedBy: document.getElementById("reportedBy").value,
       };
     }
 
-    function logToSheet() {
-      const data = getFormData();
-      fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
-      })
-        .then(response => alert("Logged to Google Sheet Successfully!"))
-        .catch(error => alert("Error logging to sheet."));
-    }
-
-    function sendSMS() {
-      const data = getFormData();
-      const message = `Date: ${formatDate(data.date)}\nTime: ${data.time}\nShift: ${data.shift}\nEquipment: ${data.equipment}\nBreakdown: ${data.breakdown}\nProblem: ${data.description}\nReported By: ${data.reportedBy}`;
-      let number = "";
-      if (data.breakdown === "Mechanical") number = "0919489913547";
-      else if (data.breakdown === "Electrical") number = "0919489913546";
-      else if (data.breakdown === "Engg") number = "091944443333,091944442222";
-
-      window.location.href = `sms:${number}?&body=${encodeURIComponent(message)}`;
-    }
-
-    function sendWhatsApp() {
-      const data = getFormData();
-      const message = `Date: ${formatDate(data.date)}\nTime: ${data.time}\nShift: ${data.shift}\nEquipment: ${data.equipment}\nBreakdown: ${data.breakdown}\nProblem: ${data.description}\nReported By: ${data.reportedBy}`;
-      let number = "";
-      if (data.breakdown === "Mechanical") number = "919489913547";
-      else if (data.breakdown === "Electrical") number = "919489913546";
-      else if (data.breakdown === "Engg") {
-        const numbers = ["91944443333", "91944442222"];
-        numbers.forEach(num => window.open(`https://wa.me/${num}?text=${encodeURIComponent(message)}`, '_blank'));
-        return;
-      }
-      window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank');
-    }
-
-    function formatDate(dateString) {
-      const [year, month, day] = dateString.split("-");
-      return `${day}-${month}-${year}`;
+    function formatDate(input) {
+      const d = new Date(input);
+      return `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`;
     }
   </script>
 </body>
