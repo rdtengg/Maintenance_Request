@@ -160,9 +160,9 @@
       const data = collectFormData();
       const msg = `Date: ${data.date}\nTime: ${data.time}\nShift: ${data.shift}\nEquipment: ${data.equipment}\nBreakdown Type: ${data.breakdownType}\nDescription: ${data.description}\nReported By: ${data.reportedBy}`;
       let numbers = [];
-      if (data.breakdownType === "Mechanical") numbers = ["0919489913547"];
-      else if (data.breakdownType === "Electrical") numbers = ["0919489913546"];
-      else if (data.breakdownType === "Engg") numbers = ["091912345678", "0919988776655"];
+      if (data.breakdownType === "Mechanical") numbers = ["+919489913547"];
+      else if (data.breakdownType === "Electrical") numbers = ["+919489913546"];
+      else if (data.breakdownType === "Engg") numbers = ["+919489913547", "+919489913546"];
 
       numbers.forEach(num => {
         const encoded = encodeURIComponent(msg);
