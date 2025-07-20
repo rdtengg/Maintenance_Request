@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RDT Maintenance Request</title>
   <style>
     body {
@@ -12,7 +12,7 @@
       padding: 20px;
     }
     .container {
-      max-width: 500px;
+      max-width: 550px;
       margin: 0 auto;
       background: white;
       padding: 20px;
@@ -21,7 +21,7 @@
     }
     h1 {
       text-align: center;
-      color: #b30000;
+      color: #b30000; /* MRF Red */
     }
     img {
       display: block;
@@ -50,6 +50,10 @@
     .btn-group button {
       width: 32%;
       display: inline-block;
+      margin-right: 2%;
+    }
+    .btn-group button:last-child {
+      margin-right: 0;
     }
   </style>
 </head>
@@ -134,39 +138,19 @@
     </select>
 
     <label for="description">Describe Problem Statement</label>
-    <textarea id="description" placeholder="Brief issue..."></textarea>
+    <textarea id="description"></textarea>
 
     <label for="reportedBy">Reported By*</label>
     <input type="text" id="reportedBy" required />
 
     <div class="btn-group">
       <button onclick="logToGoogleSheets()">Log</button>
-      <button onclick="sendMessage('sms')">Send SMS</button>
-      <button onclick="sendMessage('whatsapp')">Send WhatsApp</button>
+      <button onclick="sendMessage('sms')">SMS</button>
+      <button onclick="sendMessage('whatsapp')">WhatsApp</button>
     </div>
   </div>
 
   <script>
-    function formatDate(input) {
-      const d = new Date(input);
-      const day = String(d.getDate()).padStart(2, '0');
-      const month = String(d.getMonth() + 1).padStart(2, '0');
-      const year = d.getFullYear();
-      return `${day}-${month}-${year}`;
-    }
-
-    function collectFormData() {
-      return {
-        date: formatDate(document.getElementById("date").value),
-        time: document.getElementById("time").value,
-        shift: document.getElementById("shift").value,
-        equipment: document.getElementById("equipment").value,
-        breakdownType: document.getElementById("breakdownType").value,
-        description: document.getElementById("description").value,
-        reportedBy: document.getElementById("reportedBy").value,
-      };
-    }
-
     function logToGoogleSheets() {
       const data = collectFormData();
       fetch("https://script.google.com/macros/s/AKfycbwiWrrGh0u2GeIcfK5frqZ_IwkrF1fZpnuz6Jc6dA3SHfLsFHOMLGryUXFo0-_pjXnE/exec", {
@@ -178,8 +162,16 @@
 
     function sendMessage(method) {
       const data = collectFormData();
-      const msg = `RDT Maintenance Request Alert\nDate: ${data.date}\nTime: ${data.time}\nShift: ${data.shift}\nEquipment: ${data.equipment}\nType: ${data.breakdownType}\nIssue: ${data.description}\nReported By: ${data.reportedBy}`;
-      
+      const msg =
+        `RDT Maintenance Request Alert\n` +
+        `Date: ${data.date}\n` +
+        `Time: ${data.time}\n` +
+        `Shift: ${data.shift}\n` +
+        `Equipment: ${data.equipment}\n` +
+        `Type: ${data.breakdownType}\n` +
+        `Issue: ${data.description || 'Not specified'}\n` +
+        `Reported By: ${data.reportedBy}`;
+
       let numbers = [];
       if (data.breakdownType === "Mechanical") numbers = ["+919489913547"];
       else if (data.breakdownType === "Electrical") numbers = ["+919489913546"];
@@ -192,6 +184,26 @@
           : `sms:${num}?body=${encoded}`;
         window.open(url, '_blank');
       });
+    }
+
+    function collectFormData() {
+      return {
+        date: formatDate(document.getElementById("date").value),
+        time: document.getElementById("time").value,
+        shift: document.getElementById("shift").value,
+        equipment: document.getElementById("equipment").value,
+        breakdownType: document.getElementById("breakdownType").value,
+        description: document.getElementById("description").value.trim(),
+        reportedBy: document.getElementById("reportedBy").value.trim()
+      };
+    }
+
+    function formatDate(input) {
+      const d = new Date(input);
+      const day = d.getDate().toString().padStart(2, '0');
+      const month = (d.getMonth() + 1).toString().padStart(2, '0');
+      const year = d.getFullYear();
+      return `${day}-${month}-${year}`;
     }
   </script>
 </body>
